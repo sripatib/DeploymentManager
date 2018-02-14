@@ -19,6 +19,7 @@ resources:
   type: http-httpsfirewall-template.jinja
   properties:
     network: {{ NETWORK_NAME }}
+    targetTags: ["web"]  
 - name: {{SUBNET_NAME}}
   type: publicsubnetwork-template.jinja
   properties:
