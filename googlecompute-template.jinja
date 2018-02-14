@@ -1,0 +1,33 @@
+{% set  NETWORK_NAME = "poccustomnetwork" %}
+{% set  SUBNET_NAME  = "publicsubnet" %}
+{% set  SUBNET_NAME1  = "privatesubnet" %}
+
+resources:
+- name: {{ NETWORK_NAME }}
+  type: vpccreation-template.jinja
+- name: {{ NETWORK_NAME }}-route
+  type: routecreation-template.jinja
+  properties:
+    network: {{ NETWORK_NAME }}
+    routeTag: pocroutes
+    project: apt-passage-185509
+- name: {{ NETWORK_NAME }}-firewall
+  type: firewall-template.jinja
+  properties:
+    network: {{ NETWORK_NAME }}
+- name: {{ NETWORK_NAME }}-http-httpsfirewall
+  type: http-httpsfirewall-template.jinja
+  properties:
+    network: {{ NETWORK_NAME }}
+- name: {{SUBNET_NAME}}
+  type: publicsubnetwork-template.jinja
+  properties:
+   network: {{ NETWORK_NAME }}
+   region: us-east1
+   ipCidrRange: 192.168.10.0/24
+- name: {{SUBNET_NAME1}}
+  type: privatesubnetwork-template.jinja
+  properties:
+   network: {{ NETWORK_NAME }}
+   region: us-east1
+   ipCidrRange: 192.168.20.0/24

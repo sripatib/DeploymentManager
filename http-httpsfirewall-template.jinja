@@ -1,0 +1,10 @@
+resources:
+- type: compute.v1.firewall
+  name: {{ env["name"] }}
+  properties:
+    network: $(ref.{{ properties["network"] }}.selfLink)
+    sourceRanges: ["0.0.0.0/0"]
+    targetTags: {{ properties["targetTags"] }}
+    allowed:
+    - IPProtocol: TCP
+      ports: ["80","443"]

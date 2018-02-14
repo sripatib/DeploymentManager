@@ -1,0 +1,10 @@
+resources:
+- type: compute.v1.route
+  name: {{ env["name"] }}
+  properties:
+    network: $(ref.{{ properties["network"] }}.selfLink)
+    nextHopGateway:  https://www.googleapis.com/compute/v1/projects/{{ properties["project"] }}/global/gateways/default-internet-gateway
+    priority: 100
+    destRange: 0.0.0.0/0
+    tags:
+      - {{ properties["routeTag"] }}
