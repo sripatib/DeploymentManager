@@ -9,4 +9,4 @@ imports:
 
 resources:
 - name: network-setup
-  type: googlecompute-template.jinja
+  type: customnetwork-template.jinja
