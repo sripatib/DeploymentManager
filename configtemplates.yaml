@@ -3,7 +3,7 @@ imports:
 - path: firewall-template.jinja
 - path: privatesubnetwork-template.jinja
 - path: publicsubnetwork-template.jinja
-- path: googlecompute-template.jinja
+- path: customnetwork-template.jinja
 - path: routecreation-template.jinja
 - path: http-httpsfirewall-template.jinja
 
